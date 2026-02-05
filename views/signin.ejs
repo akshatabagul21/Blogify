@@ -15,13 +15,12 @@
                     <div class="form-group mt-3">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            name="email" placeholder="Enter email" value=" <%= locals.formData? locals.formData.email : " " %>">
+                            name="email" placeholder="Enter email" value="<%= formData? formData.email : '' %>">
                     </div>
                     <div class="form-group mt-3">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
-                            name="password" <%= locals.formData && locals.formData.password ? `value="${locals.formData.password}"`: '' %>>
-                            <%= JSON.stringify(locals.formData) %>
+                            name="password" value="<%= formData? formData.password : '' %>">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>

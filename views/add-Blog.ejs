@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+        <title>Bootstrap Demo</title>
+</head>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+        <%- include('./partials/scripts.ejs') %>
+            <form class="container mt-3 p-10 bg-light border rounded" action="/blog" method="POST" enctype="multipart/form-data">
+                <div class="mb-3 mt-3">
+                    <label for="uploadfile" class="form-label">Upload Image</label>
+                    <input type="file" id="uploadfile" class="form-control" name="uploadfile">
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content</label>
+                    <textarea class="form-control" id="content" name="content"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+            </form>
+</body>
+
+</html>

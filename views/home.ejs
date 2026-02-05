@@ -7,8 +7,8 @@
 <body>
      <%- include('./partials/nav.ejs') %>
      <%- include('./partials/scripts.ejs') %>
-     <% if (locals.user) { %>
-      home works
+     <% if (user) { %>
+      Welcome <%= user.userName %>
      <% } %>
 </body>
 </html>
