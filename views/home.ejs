@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <%- include('./partials/head.ejs') %>
-    <title>Bootstrap Demo</title>
+     <%- include('./partials/head.ejs') %>
+          <title>Bootstrap Demo</title>
 </head>
+
 <body>
      <%- include('./partials/nav.ejs') %>
-     <%- include('./partials/scripts.ejs') %>
-     <% if (user) { %>
-      Welcome <%= user.userName %>
-     <% } %>
+          <%- include('./partials/scripts.ejs') %>
+               <div class="container mt-5">
+                    <div class="row row-col-4">
+                         <% allBlogs.forEach(element=> { %>
+                              <div class="col">
+                                   <div class="card" style="width: 16rem;">
+                                        <img src=<%=element.imageUrl %> class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                             <h5 class="card-title">
+                                                  <%= element.title %>
+                                             </h5>
+                                             <!-- <p class="card-text"><%= element.content %></p> -->
+                                             <a href="/blog/<%= element._id %>" class="btn btn-primary">View</a>
+                                        </div>
+                                   </div>
+                              </div>
+                              <% }) %>
+
+
+                    </div>
+               </div>
 </body>
+
 </html>

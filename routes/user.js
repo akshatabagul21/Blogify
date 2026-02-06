@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user')
 const { generateToken } = require('../services/authentication');
-const {authenticateAndCheckCookieValue} = require('../middleware/checkToken');
 
 
 router.get("/signup", (req, res) => {
@@ -20,7 +19,6 @@ router.get("/signin", (req, res) => {
         data.message = "Please Login"
         data.success = false
     }
-    console.log("inside signin " ,data)
     return res.render("signin",data);
 })
 
@@ -52,7 +50,7 @@ router.post("/signin",async (req, res) => {
 
 })
 
-router.get("/logout", authenticateAndCheckCookieValue('token'),async (req,res) => {
+router.get("/logout",async (req,res) => {
     return res.clearCookie('token').redirect("/");
 })
 

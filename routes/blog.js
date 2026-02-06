@@ -22,9 +22,26 @@ router.get("/" , (req,res) => {
     })
 })
 
-router.post("/" , upload.single('uploadfile') , (req,res) => {
-    console.log(req.body);
-    console.log(req.file);
+router.get("/:id" , async (req,res) => {
+  const blog = await Blog.findById(req.params.id);
+  console.log("blog" , blog)
+  return res.render("blog", {
+    user : req.user,
+    blog : blog
+  })
+})
+
+router.post("/" , upload.single('uploadfile') , async (req,res) => {
+  console.log("req.user",req.user)
+  const title = req.body.title , content = req.body.content 
+    await Blog.create(
+      {
+          title,
+          content,
+          imageUrl : `uploads/${req.file.filename}`,
+          createdBy : req.user.userId
+      }
+    )
     return res.redirect("/")
 })
 
