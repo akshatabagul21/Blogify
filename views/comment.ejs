@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+        <title>Bootstrap Demo</title>
+</head>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+        <%- include('./partials/scripts.ejs') %>
+            <div class="container mt-2">
+                <a href="/blog/<%= blogId %>" class="btn btn-outline-primary mb-3">Back</a>
+
+                <h3>Add Comment</h3>
+                <form class=" container mt-3p-10 bg-light border rounded" action="/blog/<%= blogId %>/comment"
+                    method="POST">
+                    <div class="mb-3 mt-3">
+                        <label for="userName" class="form-label">User Name</label>
+                        <input class="form-control" type="text" name="userName" id="userName">
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <label for="comment" class="form-label">Comment</label>
+                        <input class="form-control" type="text" name="comment" id="comment">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-3" id="addBtn" disabled>Add</button>
+
+                </form>
+            </div>
+
+</body>
+<script>
+    const userName = document.getElementById("userName");
+    const comment = document.getElementById("comment");
+    const addBtn = document.getElementById("addBtn");
+
+    function validateForm(){
+
+        if(userName.value.trim() !== "" && comment.value.trim() !== ""){
+            addBtn.disabled = false;
+        }else{
+            addBtn.disabled = true;
+        }
+    }
+    userName.addEventListener("input",validateForm)
+    comment.addEventListener("input",validateForm)
+
+
+</script>
+
+</html>

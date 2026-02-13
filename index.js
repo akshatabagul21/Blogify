@@ -17,7 +17,6 @@ const app = express();
 const port = 8000;
 app.use(cookieParser());
 app.use(express.urlencoded({extended: true}));
-// app.use(express.static(path.resolve("./uploads")))
 app.use('/uploads', express.static('uploads'));
 app.use('/blog/uploads', express.static('uploads'));
 

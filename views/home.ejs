@@ -9,8 +9,9 @@
 <body>
      <%- include('./partials/nav.ejs') %>
           <%- include('./partials/scripts.ejs') %>
-               <div class="container mt-5">
-                    <div class="row row-col-4">
+          <div class="container text-center mt-5">
+          <div class="row g-2">
+          <% if (allBlogs && allBlogs.length) { %>
                          <% allBlogs.forEach(element=> { %>
                               <div class="col">
                                    <div class="card" style="width: 16rem;">
@@ -25,9 +26,9 @@
                                    </div>
                               </div>
                               <% }) %>
-
-
+                              <% } %>
                     </div>
+                    
                </div>
 </body>
 

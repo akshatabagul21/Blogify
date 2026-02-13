@@ -41,7 +41,7 @@ router.post("/signup",async (req, res) => {
 router.post("/signin",async (req, res) => {
     const user = req.body;
     const userStatus = await User.checkPasswordAndCreateToken(user);
-    if (!userStatus.success) {
+    if (!userStatus.successf) {
         return res.render("signin", { message: userStatus.text,formData: req.body});
     } else {
         res.cookie("token", userStatus.token,{httpOnly: true});
